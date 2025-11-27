@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>bluecheck.tech — Coming Soon</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: "Inter", sans-serif;
+        background: radial-gradient(circle at top, #0a1e3d, #020713);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        color: #ffffff;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.2rem;
+        opacity: 0.85;
+        text-align: center;
+    }
+
+    /* Floating dots */
+    .float {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        background: #4aa6ff;
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: floatUp 6s infinite ease-in-out;
+    }
+
+    .float:nth-child(1) { left: 15%; animation-delay: 0s; }
+    .float:nth-child(2) { left: 45%; animation-delay: 1.2s; }
+    .float:nth-child(3) { left: 70%; animation-delay: 2.4s; }
+    .float:nth-child(4) { left: 85%; animation-delay: 3.1s; }
+
+    @keyframes floatUp {
+        0% { transform: translateY(50px) scale(0.8); opacity: 0; }
+        40% { opacity: 0.8; }
+        100% { transform: translateY(-700px) scale(1.2); opacity: 0; }
+    }
+
+    /* Glow ring */
+    .ring {
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        border: 2px solid rgba(80,150,255,0.35);
+        animation: spin 10s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+    }
+
+    .container {
+        text-align: center;
+        z-index: 10;
+    }
+</style>
+</head>
+<body>
+
+<div class="float"></div>
+<div class="float"></div>
+<div class="float"></div>
+<div class="float"></div>
+
+<div class="ring"></div>
+
+<div class="container">
+    <h1>bluecheck.tech</h1>
+    <p>Something powerful is coming.<br>Stay tuned.</p>
+</div>
+
+</body>
+</html>
