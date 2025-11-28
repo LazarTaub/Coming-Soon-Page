@@ -6,146 +6,293 @@
 <title>BlueCheck.tech — Coming Soon</title>
 
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        font-family: "Inter", sans-serif;
-        background: radial-gradient(circle, #3a6db8 0%, #143465 40%, #081a33 70%, #020713 100%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        color: #ffffff;
-    }
+/* PAGE BACKGROUND */
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+    background: radial-gradient(circle, #3a6db8 0%, #143465 40%, #081a33 70%, #020713 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #ffffff;
+}
 
-    /* ==== ANALOG CLOCK (TOP RIGHT) ==== */
-    #analogClock {
-        position: absolute;
-        top: 20px;
-        right: 25px;
-        width: 90px;
-        height: 90px;
-        border: 3px solid rgba(150,170,255,0.4);
-        border-radius: 50%;
-        box-shadow: 0 0 12px rgba(80,130,255,0.4);
-        background: radial-gradient(circle, #d1d1d1 0%, #b8b8b8 40%, #8f8f8f 100%);
-    }
+/* ===== ANALOG CLOCK (TOP RIGHT) ===== */
+#analogClock {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 110px;
+    height: 110px;
+    border: 3px solid rgba(150,170,255,0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(80,130,255,0.4);
+    background: radial-gradient(circle, #d1d1d1 0%, #b8b8b8 40%, #8f8f8f 100%);
+}
 
-    .hand {
-        position: absolute;
-        width: 50%;
-        height: 2px;
-        background: #4aa6ff;
-        top: 50%;
-        left: 50%;
-        transform-origin: left;
-        transform: rotate(90deg);
-        box-shadow: 0 0 10px #4aa6ff;
-    }
+.clock-number {
+    position: absolute;
+    font-size: 15px;
+    color: #4aa6ff;
+    text-shadow: 0 0 8px #4aa6ff;
+    font-weight: 600;
+}
 
-    .minute-hand {
-        height: 3px;
-        width: 45%;
-        background: #70b8ff;
-        box-shadow: 0 0 10px #70b8ff;
-    }
+.hand {
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background: #4aa6ff;
+    top: 50%;
+    left: 50%;
+    transform-origin: left;
+    box-shadow: 0 0 10px #4aa6ff;
+}
 
-    .hour-hand {
-        height: 4px;
-        width: 35%;
-        background: #cfd3da; /* silver */
-        box-shadow: 0 0 10px #ffffff;
-    }
+.minute-hand {
+    height: 3px;
+    width: 45%;
+    background: #70b8ff;
+    box-shadow: 0 0 10px #70b8ff;
+}
 
-    .center-dot {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: silver;
-        border-radius: 50%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 0 8px white;
-    }
+.hour-hand {
+    height: 4px;
+    width: 35%;
+    background: #e7e7e7;
+    box-shadow: 0 0 10px white;
+}
 
-    /* Floating glowing check marks */
-    .float {
-        position: absolute;
-        font-size: 22px;
-        animation: floatUp 7s infinite ease-in-out;
-        opacity: 0.9;
-    }
+.center-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: silver;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px white;
+}
 
-    .blue {
-        color: #4aa6ff;
-        text-shadow: 0 0 10px #4aa6ff, 0 0 20px #4aa6ff, 0 0 35px #4aa6ff;
-    }
+/* ===== FLOATING CHECK MARKS ===== */
+.float {
+    position: absolute;
+    font-size: 22px;
+    animation: floatUp 7s infinite ease-in-out;
+    opacity: 0.9;
+}
 
-    .silver {
-        color: #cfd3da;
-        text-shadow: 0 0 10px #cfd3da, 0 0 20px #ffffff, 0 0 35px #d8d8d8;
-    }
+.blue { color: #4aa6ff; text-shadow: 0 0 10px #4aa6ff; }
+.silver { color: #cfd3da; text-shadow: 0 0 10px #ffffff; }
 
-    .float:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .float:nth-child(2) { left: 25%; animation-delay: 1.3s; }
-    .float:nth-child(3) { left: 40%; animation-delay: 0.8s; }
-    .float:nth-child(4) { left: 55%; animation-delay: 2.6s; }
-    .float:nth-child(5) { left: 70%; animation-delay: 1.9s; }
-    .float:nth-child(6) { left: 82%; animation-delay: 3.1s; }
-    .float:nth-child(7) { left: 90%; animation-delay: 0.5s; }
+.float:nth-child(1) { left: 10%; animation-delay: 0s; }
+.float:nth-child(2) { left: 25%; animation-delay: 1.3s; }
+.float:nth-child(3) { left: 40%; animation-delay: 0.8s; }
+.float:nth-child(4) { left: 55%; animation-delay: 2.6s; }
+.float:nth-child(5) { left: 70%; animation-delay: 1.9s; }
+.float:nth-child(6) { left: 82%; animation-delay: 3.1s; }
+.float:nth-child(7) { left: 90%; animation-delay: 0.5s; }
 
-    @keyframes floatUp {
-        0% { transform: translateY(60px) scale(0.8); opacity: 0; }
-        40% { opacity: 1; }
-        100% { transform: translateY(-750px) scale(1.2); opacity: 0; }
-    }
+@keyframes floatUp {
+    0% { transform: translateY(60px) scale(0.8); opacity: 0; }
+    40% { opacity: 1; }
+    100% { transform: translateY(-750px) scale(1.2); opacity: 0; }
+}
 
-    .ring-fill {
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        background: radial-gradient(circle, #e6e6e6 0%, #c0c0c0 40%, #9a9a9a 100%);
-        z-index: 1;
-        box-shadow: 0 0 25px #c0c0c0, inset 0 0 25px #ffffff;
-    }
+/* ===== CENTER SILVER FILL ===== */
+.ring-fill {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #efefef 0%, #d0d0d0 35%, #b0b0b0 70%, #a0a0a0 100%);
+    box-shadow: inset 0 0 25px #ffffff, 0 0 35px #cfcfcf;
+    z-index: 2;
+    overflow: hidden;
+}
 
-    .ring {
-        position: absolute;
-        width: 380px;
-        height: 380px;
-        border-radius: 50%;
-        border: 2px solid rgba(80,150,255,0.35);
-        animation: spin 10s linear infinite;
-        pointer-events: none;
-        z-index: 0;
-    }
+/* ===== MULTIPLE SHINES ===== */
+.shine {
+    position: absolute;
+    width: 160%;
+    height: 160%;
+    top: -30%;
+    left: -30%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 70%);
+    animation: shineMove 6s ease-in-out infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
 
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to   { transform: rotate(360deg); }
-    }
+.shine2 {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.12), transparent 70%);
+    animation: shineMove2 10s ease-in-out infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
 
-    .container {
-        text-align: center;
-        z-index: 10;
-        position: relative;
-    }
+@keyframes shineMove {
+    0% { transform: rotate(0deg) translate(0,0); }
+    50% { transform: rotate(180deg) translate(10px,15px); }
+    100%{ transform: rotate(360deg) translate(0,0); }
+}
+
+@keyframes shineMove2 {
+    0% { opacity: 0.1; transform: rotate(0deg); }
+    50% { opacity: 0.35; transform: rotate(180deg); }
+    100% { opacity: 0.1; transform: rotate(360deg); }
+}
+
+/* ===== HOLOGRAPHIC SHIMMER ===== */
+.holo {
+    position: absolute;
+    width: 160%;
+    height: 160%;
+    top: -30%;
+    left: -30%;
+    background: conic-gradient(
+        from 0deg,
+        rgba(255,0,255,0.15),
+        rgba(0,255,255,0.12),
+        rgba(0,150,255,0.10),
+        rgba(255,255,0,0.15),
+        rgba(255,0,255,0.15)
+    );
+    mix-blend-mode: color-dodge;
+    animation: holoSpin 9s linear infinite;
+}
+
+@keyframes holoSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== MICRO TEXTURE ===== */
+.metal-texture {
+    position: absolute;
+    inset: 0;
+    background: repeating-radial-gradient(
+        circle,
+        rgba(255,255,255,0.08) 0px,
+        rgba(255,255,255,0.04) 1px,
+        rgba(0,0,0,0.05) 2px
+    );
+    opacity: 0.25;
+    mix-blend-mode: overlay;
+}
+
+/* ===== BLUE PARTICLE DUST ===== */
+.dust {
+    position: absolute;
+    width: 460px;
+    height: 460px;
+    pointer-events: none;
+    animation: dustRotate 22s linear infinite;
+    z-index: 3;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #4aa6ff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4aa6ff;
+}
+
+.particle:nth-child(1) { top:10%; left:50%; }
+.particle:nth-child(2) { top:20%; left:80%; }
+.particle:nth-child(3) { top:50%; left:90%; }
+.particle:nth-child(4) { top:75%; left:75%; }
+.particle:nth-child(5) { top:90%; left:45%; }
+.particle:nth-child(6) { top:70%; left:15%; }
+.particle:nth-child(7) { top:40%; left:5%; }
+.particle:nth-child(8) { top:15%; left:25%; }
+
+@keyframes dustRotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== LIGHT REFRACTION EDGE ===== */
+.ring-edge {
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: rgba(120,180,255,0.7);
+    border-left-color: rgba(120,180,255,0.4);
+    border-right-color: rgba(80,130,255,0.2);
+    border-bottom-color: rgba(30,70,150,0.1);
+    filter: blur(3px);
+    animation: refractSpin 14s linear infinite;
+    z-index: 1;
+}
+
+@keyframes refractSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== BLUE GLOW RING ===== */
+.ring {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    border: 2px solid rgba(80,150,255,0.4);
+    animation: spin 10s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== CENTER TEXT ===== */
+.container h1,
+.container p {
+    text-shadow:
+        0 0 3px #4aa6ff,
+        0 0 8px #4aa6ff,
+        0 0 14px #4aa6ff;
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
 </style>
 </head>
 
 <body>
 
-<!-- ANALOG CLOCK -->
+<!-- CLOCK -->
 <div id="analogClock">
+    <div class="clock-number" style="top:5px; left:50%; transform:translateX(-50%);">12</div>
+    <div class="clock-number" style="bottom:5px; left:50%; transform:translateX(-50%);">6</div>
+    <div class="clock-number" style="top:50%; left:5px; transform:translateY(-50%);">9</div>
+    <div class="clock-number" style="top:50%; right:5px; transform:translateY(-50%);">3</div>
+
     <div class="hand hour-hand" id="hourHand"></div>
     <div class="hand minute-hand" id="minuteHand"></div>
     <div class="hand" id="secondHand"></div>
     <div class="center-dot"></div>
 </div>
 
-<!-- Floating checkmarks -->
+<!-- FLOATING CHECKMARKS -->
 <div class="float blue">✓</div>
 <div class="float blue">✓</div>
 <div class="float silver">✓</div>
@@ -154,36 +301,57 @@
 <div class="float blue">✓</div>
 <div class="float silver">✓</div>
 
-<!-- Center silver fill -->
-<div class="ring-fill"></div>
+<!-- PARTICLE DUST -->
+<div class="dust">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+</div>
 
-<!-- Outer spinning ring -->
+<!-- REFRACTION RING -->
+<div class="ring-edge"></div>
+
+<!-- SILVER CENTER WITH ALL EFFECTS -->
+<div class="ring-fill">
+    <div class="shine"></div>
+    <div class="shine2"></div>
+    <div class="holo"></div>
+    <div class="metal-texture"></div>
+</div>
+
+<!-- OUTER BLUE RING -->
 <div class="ring"></div>
 
+<!-- TEXT -->
 <div class="container">
     <h1>BlueCheck.tech</h1>
     <p>עפעס מאכטפול איז אויפן וועג<br>ווארט מיט שפאנונג</p>
 </div>
 
+<!-- CLOCK SCRIPT -->
 <script>
-    function updateAnalogClock() {
-        const now = new Date();
+function updateAnalogClock() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
 
-        const seconds = now.getSeconds();
-        const minutes = now.getMinutes();
-        const hours = now.getHours();
+    const secDeg = seconds * 6;
+    const minDeg = minutes * 6 + seconds * 0.1;
+    const hourDeg = (hours % 12) * 30 + minutes * 0.5;
 
-        const secDeg = seconds * 6;  
-        const minDeg = minutes * 6 + seconds * 0.1;
-        const hourDeg = (hours % 12) * 30 + minutes * 0.5;
+    document.getElementById("secondHand").style.transform = `rotate(${secDeg}deg)`;
+    document.getElementById("minuteHand").style.transform = `rotate(${minDeg}deg)`;
+    document.getElementById("hourHand").style.transform = `rotate(${hourDeg}deg)`;
+}
 
-        document.getElementById("secondHand").style.transform = `rotate(${secDeg}deg)`;
-        document.getElementById("minuteHand").style.transform = `rotate(${minDeg}deg)`;
-        document.getElementById("hourHand").style.transform = `rotate(${hourDeg}deg)`;
-    }
-
-    setInterval(updateAnalogClock, 1000);
-    updateAnalogClock();
+setInterval(updateAnalogClock, 1000);
+updateAnalogClock();
 </script>
 
 </body>
