@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Clock with Checkmark</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BlueCheck.tech — Coming Soon</title>
 <style>
   body {
     margin: 0;
-    background-color: #1a1a1a;
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+    background: radial-gradient(circle at center, #0a1e3d, #001a3d 70%);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     overflow: hidden;
-    font-family: Arial, sans-serif;
     color: white;
   }
 
-  canvas {
-    display: block;
-  }
+  canvas { display: block; }
 
   .bottom-text {
     position: absolute;
@@ -28,15 +26,18 @@
     text-align: center;
     color: white;
   }
-
   .bottom-text .line1 {
     font-size: 24px;
     font-weight: bold;
   }
-
   .bottom-text .line2 {
     font-size: 18px;
     color: #ccc;
+  }
+
+  /* Clock container */
+  #clockCanvas {
+    position: absolute;
   }
 </style>
 </head>
@@ -69,7 +70,7 @@ function drawClock() {
 
   // Draw clock ticks
   for (let i = 0; i < 60; i++) {
-    const angle = (i * 6) * Math.PI / 180; // 360/60
+    const angle = (i * 6) * Math.PI / 180;
     const tickLength = (i % 5 === 0) ? 15 : 7;
     const x1 = centerX + Math.cos(angle) * (radius - tickLength);
     const y1 = centerY + Math.sin(angle) * (radius - tickLength);
@@ -85,23 +86,23 @@ function drawClock() {
   }
 
   // Draw moving light ball
-  const time = Date.now() / 1000; // seconds
-  const ballAngle = (time * 60 % 360) * Math.PI / 180; // rotate full circle in 6 seconds
-  const ballRadius = 10;
+  const time = Date.now() / 1000; 
+  const ballAngle = (time * 60 % 360) * Math.PI / 180;
+  const ballRadius = 15;
   const ballX = centerX + Math.cos(ballAngle) * radius;
   const ballY = centerY + Math.sin(ballAngle) * radius;
 
   // Light glow
-  const gradient = ctx.createRadialGradient(ballX, ballY, 0, ballX, ballY, 20);
+  const gradient = ctx.createRadialGradient(ballX, ballY, 0, ballX, ballY, 25);
   gradient.addColorStop(0, 'rgba(0, 150, 255, 1)');
   gradient.addColorStop(1, 'rgba(0, 150, 255, 0)');
   ctx.fillStyle = gradient;
   ctx.beginPath();
-  ctx.arc(ballX, ballY, 20, 0, 2 * Math.PI);
+  ctx.arc(ballX, ballY, 25, 0, 2 * Math.PI);
   ctx.fill();
 
   // Draw blue check mark in center of moving ball
-  ctx.strokeStyle = "#00f"; // blue
+  ctx.strokeStyle = "#00f";
   ctx.lineWidth = 4;
   ctx.beginPath();
   ctx.moveTo(ballX - 8, ballY);
